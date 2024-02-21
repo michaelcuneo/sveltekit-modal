@@ -1,7 +1,7 @@
 import sys
 from .app import stub
 from .sveltekit_modal_config import config
-
+from modal import runner
 
 class Logger(object):
     def __init__(self, stream):
@@ -23,4 +23,4 @@ class Logger(object):
 
 
 if __name__ == '__main__':
-    stub.deploy(stdout=Logger(sys.stdout), show_progress=True)
+    runner.deploy_stub(stub)

@@ -1,4 +1,5 @@
 import { loadEnv, type Plugin } from "vite";
+
 import {
   type ProcessPromise,
   $ as run$,
@@ -7,6 +8,7 @@ import {
   path,
   chalk,
 } from "zx";
+
 import globsync from "rollup-plugin-globsync";
 
 const get_pyServerEndpointAsString = (modal_url: URL) => `
@@ -60,9 +62,11 @@ export async function sveltekit_modal(
   const plugin_modal_serve: Plugin = {
     name: "vite-plugin-sveltekit-modal-serve",
     apply: "serve",
+
     async closeBundle() {
       await kill_all_process();
     },
+
     async configureServer({ config }) {
       const packagelocation = path.join(
         config.root,
@@ -88,10 +92,12 @@ export async function sveltekit_modal(
       local_process.stderr.on("data", (s) => {
         console.log(s.toString().trimEnd()); //Logs stderr always and all of stdout if 'log': True
       });
+
       local_process.stderr.on("error", (s) => {
         console.error(chalk.red("Error: Modal Serve Failed"));
         console.error(s.toString().trimEnd());
       });
+
       local_process.stdout.on("data", (s) => {
         const out = s.toString().trimEnd();
 
@@ -100,6 +106,7 @@ export async function sveltekit_modal(
           ?.toString();
         if (modal_route_match) modal_url ??= new URL(modal_route_match);
       });
+      
       local_process.stdout.on("error", (s) => {
         console.error(chalk.red("Error: Modal Serve Failed"));
         console.error(s.toString().trimEnd());

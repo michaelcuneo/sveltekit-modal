@@ -1,6 +1,6 @@
 {
   "package": {
-    "name": "sveltekit-modal",
+    "name": "@michaelcuneo/sveltekit-modal",
     "description": "Write Python endpoints in SvelteKit using Modal",
     "github": "semicognitive/sveltekit-modal"
   },
@@ -15,7 +15,14 @@
   },
   "fmt": {
     "files": {
-      "include": ["README.md", "mod.ts", "dnt.ts", "deno.json", "import-map.json", "src/"],
+      "include": [
+        "README.md",
+        "mod.ts",
+        "dnt.ts",
+        "deno.json",
+        "import-map.json",
+        "src/"
+      ],
       "exclude": []
     }
   },

@@ -2,7 +2,8 @@ import sys
 
 from synchronicity import Interface
 from modal.cli.import_refs import import_stub
-from modal._live_reload import run_serve_loop
+# from modal._live_reload import run_serve_loop
+from modal.serving import serve_stub
 
 from .sveltekit_modal_config import config
 
@@ -44,4 +45,5 @@ class Logger(object):
 
 
 if __name__ == '__main__':
-    run_serve_loop('sveltekit_modal.app', stdout=Logger(sys.stdout), show_progress=True)
+    #run_serve_loop('sveltekit_modal.app', stdout=Logger(sys.stdout), show_progress=True)
+    serve_stub(stub_ref='sveltekit_modal.app', stub='sveltekit_modal.app', stdout=Logger(sys.stdout), show_progress=True)
