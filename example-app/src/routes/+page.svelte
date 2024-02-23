@@ -5,7 +5,7 @@
 
   function hello_test() {
     return ({ result }: any) => {
-      message = result.message;
+      message = result.data ? result.data.message : result.message;
     };
   }
 </script>
@@ -20,16 +20,30 @@
     class="flex flex-col space-y-2 md:min-w-[28rem] lg:min-w-[32rem] xl:min-w-[36rem] max-w-6xl"
   >
     <button type="submit" class="bg-blue-500 text-white rounded-md p-2"
-      >Submit</button
+      >Modal Route</button
     >
     {#if error}
       <span class="my-auto text-red-500">{error}</span>
     {/if}
-    {#if message}
-      <div class="h-10" />
-      <article class="prose">
-        Summary: {@html message}
-      </article>
+  </form>
+  <form
+    method="POST"
+    action="/api/testroute"
+    use:enhance={hello_test}
+    on:change={() => ((error = undefined), (message = undefined))}
+    class="flex flex-col space-y-2 md:min-w-[28rem] lg:min-w-[32rem] xl:min-w-[36rem] max-w-6xl"
+  >
+    <button type="submit" class="bg-blue-500 text-white rounded-md p-2"
+      >Test Route</button
+    >
+    {#if error}
+      <span class="my-auto text-red-500">{error}</span>
     {/if}
   </form>
+  {#if message}
+    <div class="h-10" />
+    <article class="prose">
+      Summary: {@html message}
+    </article>
+  {/if}
 </main>

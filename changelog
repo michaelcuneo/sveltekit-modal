@@ -1,0 +1,6 @@
+
+
+
+Bugs:
+zx needs to be installed into the SvelteKit Package because it's not being done by sveltekit-modal.
+Writing to .env.production doesn't work a lot for some reason.

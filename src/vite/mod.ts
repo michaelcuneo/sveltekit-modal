@@ -75,7 +75,7 @@ export async function sveltekit_modal(
         "esm/src/vite"
       );
 
-      run$.verbose = false;
+      run$.verbose = true;
       run$.env.PYTHONDONTWRITEBYTECODE = "1";
 
       cd$(packagelocation);
