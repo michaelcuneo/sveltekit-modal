@@ -23,4 +23,4 @@ class Logger(object):
 
 
 if __name__ == '__main__':
-    runner.deploy_stub(stub)
+    runner.deploy_stub(stub, stdout=Logger(sys.stdout), show_progress=True)

@@ -45,5 +45,4 @@ class Logger(object):
 
 
 if __name__ == '__main__':
-    #run_serve_loop('sveltekit_modal.app', stdout=Logger(sys.stdout), show_progress=True)
     serve_stub(stub_ref='sveltekit_modal.app', stub='sveltekit_modal.app', stdout=Logger(sys.stdout), show_progress=True)

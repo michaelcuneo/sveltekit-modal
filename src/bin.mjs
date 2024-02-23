@@ -4,6 +4,8 @@ import "zx/globals";
 
 import { parse, stringify } from "envfile";
 
+echo`WHAT THE HECKIN?`;
+
 const cmd = argv._[0];
 switch (cmd) {
   case "deploy":
@@ -14,7 +16,9 @@ switch (cmd) {
       if (entry.kind == "stdout" || entry.kind == "stderr") log(entry);
       else return;
     };
+    echo`DEPLOYING`;
 
+    /*
     cd(path.join(".", "node_modules", "sveltekit-modal", "esm/src/vite"));
 
     const python_path = await $`which python3`;
@@ -32,7 +36,10 @@ switch (cmd) {
       ".env.production",
       stringify({ ...env_prod, MODAL_APP_URL: modal_route_match })
     );
+    */
     break;
+  case "testing":
+    echo`TESTING`;
   default:
     echo`Invalid command ${cmd}. Did you mean "deploy"?`;
     break;
